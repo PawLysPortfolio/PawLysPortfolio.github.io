@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server  --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "check-types": "tsc",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "check-types": "tsc"
   },
   "keywords": [],
   "author": "",
