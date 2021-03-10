@@ -3,9 +3,14 @@ import { Box, Flex } from '@chakra-ui/react';
 import { centralizeFlex, sectionMainTitle, newSection } from '../../../components/global/globalStyles';
 import { DisplayProject } from '../../../components/projects/DisplayProject';
 
-type IProps = { forwardRef: React.MutableRefObject<HTMLDivElement | null> };
+type IProps = {
+  forwardRef: React.MutableRefObject<HTMLDivElement | null>;
+  projectsRef: {
+    [key: string]: React.MutableRefObject<HTMLDivElement | null>;
+  };
+};
 
-const Projects: React.FC<IProps> = ({ forwardRef }) => {
+const Projects: React.FC<IProps> = ({ forwardRef, projectsRef }) => {
   return (
     <Flex
       direction="column"
@@ -27,6 +32,7 @@ const Projects: React.FC<IProps> = ({ forwardRef }) => {
           </Box>
         </Flex>
         <DisplayProject
+          projectRef={projectsRef.votingSystemProject}
           title="Voting system"
           description="Inspiration taken from the presidential election in 2020 which I took a part as a committee member and
           operator. My job was to enter data into the system and I just though that creating something similar would be
@@ -36,6 +42,7 @@ const Projects: React.FC<IProps> = ({ forwardRef }) => {
           linkGithub="https://github.com/LysPaw/wyboryreactapp"
         />
         <DisplayProject
+          projectRef={projectsRef.onlineHardwareStoreProject}
           title="Online hardware store"
           description="I tried to create a simple hardware store. Backend doesn't support authentication as well as payment, 
           since the main goal was to consolidate my skills in React (SPA), Redux and Typescript. "
@@ -44,6 +51,7 @@ const Projects: React.FC<IProps> = ({ forwardRef }) => {
           linkGithub="https://github.com/LysPaw/LysPaw.github.io/tree/master"
         />
         <DisplayProject
+          projectRef={projectsRef.authenticationWithExpressProject}
           title="Authentication with Express"
           description="Initial goal was to create a simulator of a big system of container transport, but after creating authentication and menu 
           I really didn't have an idea at how it should exactly work. In the meantime, I discovered a new technologies like Typescript 
@@ -53,12 +61,19 @@ const Projects: React.FC<IProps> = ({ forwardRef }) => {
           linkGithub="https://github.com/PawelLys/React-Node_01"
         />
         <DisplayProject
+          projectRef={projectsRef.accomodationAppProject}
           title="Accomodation app"
           description="My first bigger React app. As you could expect the code is a complete mess, but I am really happy with the visual aspect of 
           the page, especially since back then I didn't use any UI library and done everything from start to finish in CSS."
           imgFileName="proj4"
           linkLive="https://pawellys.github.io/"
           linkGithub="https://github.com/PawelLys/accomodation_page"
+        />
+        <DisplayProject
+          title="Portfolio"
+          description="This page - simple SPA build with React and Chakra UI."
+          imgFileName="proj5"
+          linkGithub="https://github.com/LysPaw/portfolio"
           lastElement
         />
       </Box>

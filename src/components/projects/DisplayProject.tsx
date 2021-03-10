@@ -5,6 +5,7 @@ import { HiChevronRight } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
 
 type IProps = {
+  projectRef?: React.MutableRefObject<HTMLDivElement | null>;
   title: string;
   description: string;
   imgFileName: string;
@@ -14,6 +15,7 @@ type IProps = {
 };
 
 export const DisplayProject: React.FC<IProps> = ({
+  projectRef = null,
   title,
   description,
   imgFileName,
@@ -29,13 +31,18 @@ export const DisplayProject: React.FC<IProps> = ({
       borderBottom={lastElement ? '1px solid #eaeaea' : 'none'}
       pb={lastElement ? { base: '20px', md: '50px' } : '0'}
       flexDirection={{ base: 'column', xl: 'row' }}
-      alignItems="center">
-      <Box>
+      alignItems="center"
+      justifyContent="space-between"
+      id={title.split(' ')[0]}
+      ref={projectRef}>
+      <Box flex="1">
         <Flex {...centralizeFlex} fontWeight="500" color="#333" fontSize="18px" mb="10px">
           {title}
         </Flex>
 
-        <Box mb="20px">{description}</Box>
+        <Box mb="20px" textAlign={lastElement ? 'center' : 'left'}>
+          {description}
+        </Box>
 
         <Flex justifyContent="space-evenly" mb="30px">
           {linkLive && (

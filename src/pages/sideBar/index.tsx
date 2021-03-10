@@ -1,22 +1,13 @@
 import React, { useState } from 'react';
 import { useRefLink } from '../../RefLinkContext';
-import { Box, BoxProps, Flex, Icon, Image, ListItem, UnorderedList } from '@chakra-ui/react';
+import { Box, BoxProps, Flex, Icon, Image, ListItem, UnorderedList, Link } from '@chakra-ui/react';
 import { centralizeFlex } from '../../components/global/globalStyles';
 import { HiMenu } from 'react-icons/hi';
+import { scrollIntoView } from '../../components/projects/scrollIntoView';
 
 export default () => {
   const [showNav, setShowNav] = useState(false);
   const refLink = useRefLink();
-
-  const scrollIntoView = (to: React.MutableRefObject<HTMLDivElement | null>) => {
-    if (to && to.current) {
-      to.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start',
-      });
-    }
-  };
 
   return (
     <Flex
@@ -40,7 +31,7 @@ export default () => {
             </Box>
           </Flex>
           <Box fontSize={{ base: '24px', sm: '32px', lg: '24px', xl: '32px' }}>Paweł Łyskawiński</Box>
-          <Box fontSize={{ base: '14px', sm: '16px', lg: '15px', xl: '16px' }}>full-stack web developer</Box>
+          <Box fontSize={{ base: '14px', sm: '16px', lg: '15px', xl: '16px' }}>junior full stack developer</Box>
         </Box>
       </Flex>
       <Flex
@@ -60,7 +51,7 @@ export default () => {
         as="nav"
         lineHeight="30px"
         fontSize="14px"
-        height={{ base: showNav ? '160px' : '0px', lg: '160px' }}
+        height={{ base: showNav ? '185px' : '0px', lg: 'auto' }}
         transition="height .4s"
         textAlign={{ base: 'right', lg: 'left' }}>
         <UnorderedList pt={{ base: '10px', lg: '45px' }} listStyleType="none" marginLeft="0">
@@ -79,12 +70,23 @@ export default () => {
               Projects
             </Box>
           </ListItem>
-        </UnorderedList>
-        <UnorderedList listStyleType="none" marginLeft="0" mt="15px">
           <ListItem padding="0 10%">
             <Box {...itemBoxStyle} onClick={() => scrollIntoView(refLink[3])}>
               Contact
             </Box>
+          </ListItem>
+        </UnorderedList>
+        <UnorderedList listStyleType="none" marginLeft="0" mt="15px">
+          <ListItem padding="0 10%">
+            <Link
+              width="100%"
+              href="https://pawlysportfolio.github.io/cv/"
+              isExternal
+              _focus={{ boxShadow: 'none' }}
+              opacity={{ base: '1', lg: '.9' }}
+              _hover={{ opacity: '1', textDecoration: { base: 'none', lg: 'underline' }, color: 'inherit' }}>
+              <Box>CV</Box>
+            </Link>
           </ListItem>
         </UnorderedList>
       </Box>

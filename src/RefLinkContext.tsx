@@ -9,7 +9,7 @@ export const useRefLink = () => useContext(RefsLinkContext);
 
 export const useRefLinkUpdate = () => useContext(RefsLinkUpdateContext);
 
-const App: React.FC = ({ children }) => {
+const ContextApp: React.FC = ({ children }) => {
   const [refsLinkState, setRefsLinkState] = useState<React.MutableRefObject<HTMLDivElement | null>[]>([]);
 
   return (
@@ -19,4 +19,4 @@ const App: React.FC = ({ children }) => {
   );
 };
 
-export default App;
+export default ContextApp;
