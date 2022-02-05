@@ -24,9 +24,12 @@ const Experience: React.FC<IProps> = ({ forwardRef, projects }) => {
           Experience
         </Box>
         <Flex {...mainFlexContainer}>
-          <Flex {...timeLine}>
+          <Flex {...timeLine} flexDirection={{ base: 'row', md: 'column' }}>
             <Box height="10%" pr="15px" {...marker('50px')}>
               2st quarter of 2021 <Box display={{ base: 'initial', md: 'none' }}>- today</Box>
+            </Box>
+            <Box height="100%" position="relative" display={{ base: 'none', md: 'block' }} mt="20px" {...line}>
+              today
             </Box>
           </Flex>
           <Flex {...boxContainer} mt={{ base: '20px', md: '0' }}>
@@ -90,6 +93,20 @@ const boxContainer: FlexProps = {
   padding: '20px',
   background: '#f8f8f8',
   boxShadow: '3px 3px 5px 3px rgba(0, 0, 0, .3)',
+};
+
+const line: BoxProps = {
+  _after: {
+    content: '""',
+    position: 'absolute',
+    top: '13px',
+    left: '-50%',
+    transform: 'translateX(50%)',
+    display: 'block',
+    width: '8px',
+    height: '1px',
+    backgroundColor: '#000',
+  },
 };
 
 export default Experience;

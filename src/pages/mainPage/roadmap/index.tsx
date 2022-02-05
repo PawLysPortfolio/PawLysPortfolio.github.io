@@ -238,3 +238,29 @@ const boxContainer: FlexProps = {
 export default Roadmap;
 
 //<Route path="/1" component={ProductDetails} />
+
+/*
+
+<Flex {...timeLine} flexDirection={{ base: 'row', md: 'column' }} pt="40px">
+<Box height="10%" pr="15px" {...marker('50px')}>
+  3st quarter of 2020 <Box display={{ base: 'initial', md: 'none' }}>- today</Box>
+</Box>
+<Box height="100%" position="relative" display={{ base: 'none', md: 'block' }} {...line}>
+  today
+</Box>
+</Flex>
+const line: BoxProps = {
+  _after: {
+    content: '""',
+    position: 'absolute',
+    top: '13px',
+    left: '-50%',
+    transform: 'translateX(50%)',
+    display: 'block',
+    width: '8px',
+    height: '1px',
+    backgroundColor: '#000',
+  },
+};
+
+*/
