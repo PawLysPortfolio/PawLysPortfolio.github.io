@@ -3,32 +3,46 @@ import { sectionMainTitle, newSection } from '../../../components/global/globalS
 import { Box, BoxProps, Button, Flex, FlexProps, Icon } from '@chakra-ui/react';
 import { HiChevronDown, HiChevronUp } from 'react-icons/hi';
 import { scrollIntoView } from '../../../components/projects/scrollIntoView';
+import { useRefLink } from '../../../RefLinkContext';
 
 type IProps = {
   forwardRef: React.MutableRefObject<HTMLDivElement | null>;
   projects: React.MutableRefObject<HTMLDivElement | null>[];
 };
 
+export const displayProjectBtn = (
+  arrayNum: number,
+  projects: React.MutableRefObject<HTMLDivElement | null>[],
+  addS?: boolean
+) => {
+  return (
+    <Button
+      display="block"
+      colorScheme="green"
+      mt="15px"
+      pl="1.3rem"
+      _focus={{ outline: 'none' }}
+      onClick={() => scrollIntoView(projects[arrayNum])}>
+      Project{addS ? 's' : ''} <Icon as={HiChevronDown} fontSize="22px" />
+    </Button>
+  );
+};
+
 const Roadmap: React.FC<IProps> = ({ forwardRef, projects }) => {
   const [showMore, setShowMore] = useState(false);
 
-  const displayProjectBtn = (arrayNum: number) => {
-    return (
-      <Button
-        display="block"
-        colorScheme="green"
-        mt="15px"
-        pl="1.3rem"
-        _focus={{ outline: 'none' }}
-        onClick={() => scrollIntoView(projects[arrayNum])}>
-        Project <Icon as={HiChevronDown} fontSize="22px" />
-      </Button>
-    );
+  const refLink = useRefLink();
+
+  const onShowMoreClick = () => {
+    if (showMore) {
+      scrollIntoView(refLink[2], false, 'end');
+    }
+    setShowMore(!showMore);
   };
+
   return (
     <Box
       ref={forwardRef}
-      background="#fcfcfc"
       {...newSection}
       pl={{ base: '3%', xl: '10%' }}
       pr={{ base: '10px', md: '20px', xl: '40px' }}
@@ -70,10 +84,10 @@ const Roadmap: React.FC<IProps> = ({ forwardRef, projects }) => {
             </Box>
             <Box flex="0 0 100%">
               From "big three" frontend frameworks for JavaScript I decided to go with React first. I really appreciate
-              how easy it is to add a new libraries based on your needs (Redux for example). Of course after I will get
-              a confirmation that my React is really advanced I plan on picking up Angular and Vue as well.
+              how easy it is to add a new libraries based on your needs. Of course after I will get a confirmation that
+              my React is really advanced I plan on picking up Angular and Vue as well to be more versatile.
             </Box>
-            {displayProjectBtn(3)}
+            {displayProjectBtn(5, projects)}
           </Flex>
         </Flex>
 
@@ -91,9 +105,9 @@ const Roadmap: React.FC<IProps> = ({ forwardRef, projects }) => {
               After a few minor projects build with only frontend I was felling that I really miss a backend. Sometimes
               for a project to make any sense, you just need authentication or other features that are only possible
               after creating a server. At this point since I felt fairly proficient in my JavaScript skills, I decided
-              to go for the easiest route for me, with is stick to it and pick up Express as my backend framework. Of
-              course in future I plan to learn C# and Java with their respectively frameworks as well.
-              {displayProjectBtn(2)}
+              to go for the easiest route for me, with is picking up Express.js as my backend framework. In have plans
+              to learn .NET since I already know basics of C#.
+              {displayProjectBtn(4, projects)}
             </Box>
           </Flex>
         </Flex>
@@ -109,9 +123,8 @@ const Roadmap: React.FC<IProps> = ({ forwardRef, projects }) => {
               Typescript
             </Box>
             <Box flex="0 0 100%">
-              Basically in the middle of my fist bigger fullstack project I discover a Typescript and immediately
-              started learning it. Since I started programming a little first in C++ I was really missing a type safety
-              in JavaScript and Typescript solved most of my problems, not to mention new functionalities it offers.
+              In the middle of my first big fullstack project I discovered a Typescript and immediately started learning
+              it. The variety of functionalities it offers (like static typing, classes or interfaces) are immeasurable.
             </Box>
           </Flex>
         </Flex>
@@ -127,10 +140,10 @@ const Roadmap: React.FC<IProps> = ({ forwardRef, projects }) => {
               Javascript (Typescript), React (SPA), Redux, Styled Components
             </Box>
             <Box flex="0 0 100%">
-              I decided to create my first bigger project with Typescript and since I wasn't fully certain in
-              implementation Typescript on the backend I decided to go consolidate my basics and make a big Single Page
-              Application in React.
-              {displayProjectBtn(1)}
+              I decided to create my first bigger project with Typescript and since I wasn't fully certain about
+              implementation of Typescript on the backend I decided to go consolidate my basics and make a big Single
+              Page Application in React.
+              {displayProjectBtn(3, projects)}
             </Box>
           </Flex>
         </Flex>
@@ -140,22 +153,18 @@ const Roadmap: React.FC<IProps> = ({ forwardRef, projects }) => {
             <Box height="10%" pr="15px" {...marker('50px')}>
               3st quarter of 2020 <Box display={{ base: 'initial', md: 'none' }}>- today</Box>
             </Box>
-            <Box height="100%" position="relative" display={{ base: 'none', md: 'block' }} {...line}>
-              today
-            </Box>
           </Flex>
           <Flex mt="20px" {...boxContainer}>
             <Box flex="0 0 100%" fontWeight="500" mb="20px">
               Javascript (Typescript), Next.js, Node.js, Express (GraphQL server), PostgreSQL, Chakra UI
             </Box>
             <Box flex="0 0 100%">
-              After I was done with my React (SPA) project I decided to go back and finish my previous fullstack
+              After I was done with my latest React (SPA) project I decided to go back and finish my previous fullstack
               project, but since I genuinely enjoy discovering a new technologies in the web development world, I
               stumbled upon a GraphQL and it immediately appealed to me. Instead of creating all those endpoints and
-              using correct methods for them in REST API, I really liked how it's only a single one in GrahpQL. I also
-              wasn't too much fond of MongoDB so I decided to go for PostgreSQL and I can most certainly say that I like
-              it very much.
-              {displayProjectBtn(0)}
+              using correct methods for them in REST API, I really like how it's simplified to only single one in
+              GrahpQL. I also wasn't too fond of MongoDB so I decided to go for PostgreSQL.
+              {displayProjectBtn(2, projects)}
             </Box>
           </Flex>
         </Flex>
@@ -165,8 +174,8 @@ const Roadmap: React.FC<IProps> = ({ forwardRef, projects }) => {
           bottom="0"
           left="0"
           width="100%"
-          height={showMore ? '80px' : '130px'}
-          backgroundImage="linear-gradient(rgba(81, 108, 180, 0.4), rgba(81, 108, 180, 1))"
+          height={showMore ? '80px' : '100px'}
+          backgroundImage="linear-gradient(rgba(158, 158, 158, 0.4), #313131ee)"
           color="#fff"
           alignItems="center"
           justifyContent="center"
@@ -174,7 +183,7 @@ const Roadmap: React.FC<IProps> = ({ forwardRef, projects }) => {
           fontWeight="500"
           lineHeight={showMore ? '30px' : '40px'}
           cursor="pointer"
-          onClick={() => setShowMore(!showMore)}>
+          onClick={onShowMoreClick}>
           <Box fontSize={showMore ? '23px' : '26px'}>{showMore ? 'Hide' : 'Show more'}</Box>
           <Icon as={showMore ? HiChevronUp : HiChevronDown} fontSize={showMore ? '26px' : '30px'} />
         </Flex>
@@ -215,20 +224,6 @@ const marker: (top?: string) => BoxProps = (top = '30px') => {
       backgroundColor: 'rgba(187,30,30,.9)',
     },
   };
-};
-
-const line: BoxProps = {
-  _after: {
-    content: '""',
-    position: 'absolute',
-    top: '13px',
-    left: '-50%',
-    transform: 'translateX(50%)',
-    display: 'block',
-    width: '8px',
-    height: '1px',
-    backgroundColor: '#000',
-  },
 };
 
 const boxContainer: FlexProps = {

@@ -17,7 +17,9 @@ export default ({ forwardRef }: { forwardRef: React.MutableRefObject<HTMLDivElem
             <Box my="5px" fontWeight="500" color="#333" fontSize="18px">
               Frontend
             </Box>
-            <Box>HTML, CSS/SASS, JavaScript, TypeScript, React, Redux, Next.js, Styled Components, Chakra UI</Box>
+            <Box>
+              HTML, CSS/SASS, JavaScript, TypeScript, React, Redux, Next.js, Bootstrap, Styled Components, Chakra UI
+            </Box>
           </Flex>
 
           <Flex {...flexItem} mb={{ base: '15px', md: '70px' }}>
@@ -26,10 +28,12 @@ export default ({ forwardRef }: { forwardRef: React.MutableRefObject<HTMLDivElem
             </Box>
             <Box my="5px" fontWeight="500" color="#333" fontSize="18px">
               Backend
+              <Box fontWeight="400" fontSize="12px" opacity="0.7" mt="-5px">
+                basic
+              </Box>
             </Box>
             <Box>
-              Node.js, Express (<span style={{ whiteSpace: 'nowrap' }}>REST API - basic</span>,{' '}
-              <span style={{ whiteSpace: 'nowrap' }}>GraphQL - advanced</span>)
+              Node.js, Express (<span style={{ whiteSpace: 'nowrap' }}>REST API, GraphQL</span>)
             </Box>
           </Flex>
 
@@ -39,6 +43,9 @@ export default ({ forwardRef }: { forwardRef: React.MutableRefObject<HTMLDivElem
             </Box>
             <Box my="5px" fontWeight="500" color="#333" fontSize="18px">
               Database
+              <Box fontWeight="400" fontSize="12px" opacity="0.7" mt="-5px">
+                basic
+              </Box>
             </Box>
             <Box>PostgreSQL, Redis</Box>
           </Flex>
@@ -67,4 +74,3 @@ const flexItem: FlexProps = {
   paddingX: '10%',
   mb: '15px',
 };
-// background-image:url('images/login/login_background.jpg');bgPhoto.png

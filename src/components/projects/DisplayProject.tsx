@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, Flex, Icon, Image, Link } from '@chakra-ui/react';
 import { centralizeFlex } from '../global/globalStyles';
 import { HiChevronRight } from 'react-icons/hi';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaExclamationTriangle } from 'react-icons/fa';
 
 type IProps = {
   projectRef?: React.MutableRefObject<HTMLDivElement | null>;
@@ -12,6 +12,7 @@ type IProps = {
   linkLive?: string;
   linkGithub?: string;
   lastElement?: boolean;
+  warningMessage?: React.ReactNode;
 };
 
 export const DisplayProject: React.FC<IProps> = ({
@@ -22,6 +23,7 @@ export const DisplayProject: React.FC<IProps> = ({
   linkLive,
   linkGithub,
   lastElement,
+  warningMessage,
 }) => {
   return (
     <Flex
@@ -60,6 +62,12 @@ export const DisplayProject: React.FC<IProps> = ({
             </Link>
           )}
         </Flex>
+        {warningMessage && (
+          <Flex alignItems="center" justifyContent="center" mt="-10px" mb="10px" fontSize="12px" color="#696969">
+            <Icon as={FaExclamationTriangle} mb="auto" mt="2px" mr="4px" fontSize="14px" color="#ffc107" />
+            {warningMessage}
+          </Flex>
+        )}
       </Box>
       <Flex
         flex={{ base: '0 0 1', xl: '0 0 454px' }}

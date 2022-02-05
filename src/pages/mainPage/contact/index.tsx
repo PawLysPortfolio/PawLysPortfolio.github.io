@@ -9,8 +9,8 @@ const Contact: React.FC<IProps> = ({ forwardRef }) => {
   return (
     <Box
       ref={forwardRef}
-      background="#fcfcfc"
       {...newSection}
+      background="#fcfcfc"
       pb="15vh"
       mb="100px"
       pl={{ base: '3%', xl: '10%' }}
@@ -19,10 +19,10 @@ const Contact: React.FC<IProps> = ({ forwardRef }) => {
         <Box pl={{ base: '10px', sm: '10%' }} {...sectionMainTitle} textAlign="left">
           CONTACT ME
         </Box>
-        <Box mb="50px" pr={{ base: '0', lg: '50px' }}>
-          I am available for hire preceded by free of charge trial period if it's necessary to test my skills or to see
-          if I will make a good fit with your team.
-        </Box>
+        {/* <Box mb="50px" pr={{ base: '0', lg: '50px' }}>
+          I am available for an internship or hire preceded by an unpaid trial period if it's necessary to test my
+          skills or to see if I will make a good fit with your team.
+        </Box> */}
         <Flex flex="0 0 100%" flexWrap="wrap" mb="10px">
           <Box minW="150px">E-mail:</Box>
           <Link
